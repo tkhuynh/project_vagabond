@@ -1,2 +1,13 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<% if @city_id %>
+ <h1>Posts about <%=  City.find(@city_id).name %></h1>
+<% else %>
+	<h1>All Posts</h1>
+<% end %>
+<% if @posts.any? %>
+	<% @posts.each do |post| %>
+		<h3><%= link_to post.title, post_path(post), class: "index_post_title" %></h3>
+	  <p><i><%= post.city.name %> - Posted by: <%= link_to User.find(post.user_id).name, user_path(User.find(post.user_id)), class: "post_user_name" %> (<%= time_ago_in_words(post.created_at) %> ago)</i></p>
+	<% end %>
+<% else %>
+	<h3>There aren't any posts.</h3>
+<% end %>

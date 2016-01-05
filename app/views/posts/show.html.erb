@@ -3,6 +3,7 @@
 <% if current_user %>
 	<%= link_to "Edit", edit_post_path(@post), class: "btn btn-primary" %>
 	<%= link_to "Delete", @post, method: :delete, data: {confirm: "Are You Sure?"} , class: "btn btn-primary" %>
+	<%= link_to "Go to " + City.find_by_id(@post.city_id).name, city_path(@post.city_id), class: "btn btn-default" %>
 <% else %>
 <% end %>
 

@@ -12,14 +12,15 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Project Vagabond</a>
+      <a class="navbar-brand" href="/">Project Vagabond</a>
     </div>
     <ul class="nav navbar-nav">
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Cities <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="#">1</a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
+          <li><%= link_to "All Cities", posts_path %></li>
+          <% City.all.each do |city| %>
+            <li><%= link_to city.name, posts_path(city: city.name) %></li>
+          <% end %>
         </ul>
       </li>
     </ul>
