@@ -24,6 +24,7 @@
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
+      <li><%= link_to "Add Post", new_post_path %></li>
 			<% if current_user %>
 				<li><%= link_to "Profile", user_path(current_user) %></li>
 				<li><%= link_to "Logout", logout_path %></li>

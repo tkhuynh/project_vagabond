@@ -9,3 +9,16 @@
 	<h3>Email: <%= @user.email %></h3>
 	<%= link_to 'Home', root_path, class: "btn btn-default" %>
 <% end %>
+<hr>
+<% if @user.posts.any? %>
+	<% @user.posts.each do |post| %>
+		<h3><%= link_to post.title, post_path(post) %></h3>
+		<h4><%= simple_format post.description %></h4>
+	<% end %>
+<% else %>
+	<% if current_user == @user %>
+		<h4>You don't have any post yet.</h4>
+	<% else %>
+		<h4>This user doesn't have any post yet.</h4>
+	<% end %>
+<% end %>

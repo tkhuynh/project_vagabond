@@ -1,0 +1,8 @@
+<h2><%= @post.title %></h2>
+<h4><%= simple_format @post.description %></h4>
+<% if current_user %>
+	<%= link_to "Edit", edit_post_path(@post), class: "btn btn-primary" %>
+	<%= link_to "Delete", @post, method: :delete, data: {confirm: "Are You Sure?"} , class: "btn btn-primary" %>
+<% else %>
+<% end %>
+
