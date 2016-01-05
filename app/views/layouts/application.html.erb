@@ -7,6 +7,34 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<!-- navbar -->
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Project Vagabond</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Cities <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+        </ul>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+			<% if current_user %>
+				<li><%= link_to "Profile", user_path(current_user) %></li>
+				<li><%= link_to "Logout", logout_path %></li>
+			<% else %>
+	      <li><%= link_to "Signup", new_user_path %></li>
+	      <li><%= link_to "Login", login_path %></li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
+
 
 <!-- error message -->
 <% flash.each do |name, msg| %>
