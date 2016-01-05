@@ -1,0 +1,11 @@
+<% if current_user == @user %>
+ <h2>Hello, <%= @user.name %></h2>
+ <h3>Email: <%= @user.email %></h3>
+ <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-primary" %>
+ <%= link_to 'Delete', @user, method: :delete, data: {confirm: "Are You Sure?"}, class: "btn btn-primary" %>
+ <%= link_to 'Home', root_path, class: "btn btn-default" %>
+<% else %>
+	<h2><%= @user.name %></h2>
+	<h3>Email: <%= @user.email %></h3>
+	<%= link_to 'Home', root_path, class: "btn btn-default" %>
+<% end %>
