@@ -15,7 +15,7 @@
 <% end %>
 <hr>
 <% if @user.posts.any? %>
-	<% @user.posts.each do |post| %>
+	<% @posts.each do |post| %>
 		<h3><%= link_to post.title, post_path(post) %></h3>
 		<h4><%= simple_format post.description %></h4>
 	<% end %>
@@ -26,3 +26,7 @@
 		<h4>This user doesn't have any post yet.</h4>
 	<% end %>
 <% end %>
+
+<div class="pagination_holder text-center">
+	<%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+</div>
