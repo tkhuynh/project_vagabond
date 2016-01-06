@@ -1,0 +1,94 @@
+
+p {
+	color: #062F3D;
+}
+
+h1 {
+	font-family: 'ikaros_sans_regularregular';
+	text-transform: uppercase;
+	color: #062F3D;
+}
+
+h3 {
+	color: #062F3D;
+}
+
+.jumbotron {
+	background-image: 'ProjectVagabondParis-02.png';
+}
+
+
+.para-header {
+	margin-top: 10px;
+}
+
+.content-section-a {
+	background-color: white;
+}
+
+
+/*All navbar style override*/
+
+
+.navbar-default {
+	margin-bottom: 0px;
+	background-color: #062F3D;
+	color: #DEEBCD;
+}
+
+.navbar-default .navbar-brand {
+  color: white;
+}
+
+.navbar-default .navbar-brand:hover {
+  color: #DEEBCD;
+}
+
+.navbar-header {
+	font-family: 'ikaros_sans_regularregular';
+}
+
+.navbar-right {
+	color: #DEEBCD;
+}
+
+.navbar-brand {
+  float: left;
+  height: 50px;
+  padding: 28px 15px;
+  padding-top: 30px;
+  font-size: 27px;
+  line-height: 20px;
+}
+
+.navbar-default .navbar-nav > li > a {
+    margin-top: 2px;
+    color: white;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    margin-top: 2px;
+    color: #DEEBCD;
+}
+
+.navbar-inner {
+  background: none !important; 
+  border: 0 !important;
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+}
+
+/*Edit logo and other images*/
+.logo {
+	padding-top: 10px;
+	margin-right: 14px;
+	height: 44px;
+}
+
+.index-image {
+	border-radius: 1px;
+}
+
+.city-banner {
+	width: 100%;
+}
