@@ -22,6 +22,7 @@ $(function(){
   var geocoder = L.mapbox.geocoder('mapbox.places-v1');
   // function to show markers on map
   var showMarker = function(lng, lat, city, city_id) {
+    city_id = city.replace(/\s/g, "-").toLowerCase();
     L.mapbox.featureLayer({
       type: 'Feature',
       geometry: {
