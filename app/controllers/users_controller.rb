@@ -34,6 +34,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @posts = @user.posts.paginate(:page => params[:page], per_page: 5)
   end
 
   def edit
@@ -73,11 +74,11 @@ class UsersController < ApplicationController
 private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar, :slug)
   end
 
   def find_user
-    @user = User.find_by_id(params[:id])
+    @user = User.friendly.find(params[:id])
   end
 
 end
