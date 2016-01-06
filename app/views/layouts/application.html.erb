@@ -9,14 +9,13 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <!-- navbar -->
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <%= image_tag "ProjectVagabond.png", class: "logo pull-left" %>
-          <%= link_to "MONARCH", root_path, class: "navbar-brand" %>
-        </div>
-      </ul>
+  <!-- navbar -->
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <%= image_tag "ProjectVagabond.png", class: "logo pull-left" %>
+        <%= link_to "MONARCH", root_path, class: "navbar-brand" %>
+      </div>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Add Post", new_post_path, class: "nav-links" %></li>
         <% if current_user %>
@@ -31,12 +30,19 @@
   </nav>
   <!-- error message -->
   <% flash.each do |name, msg| %>
-  <div class="alert <%= name == 'error' ? 'alert-danger' : 'alert-info' %>">
-    <div class="container">
-      <%= msg %>
+    <div class="alert <%= name == 'error' ? 'alert-danger' : 'alert-info' %>">
+      <div class="container">
+        <%= msg %>
+      </div>
     </div>
-  </div>
   <% end %>
   <%= yield %>
+
+<!-- jquery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+<script src='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.js'></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<%= javascript_include_tag 'application' %>
 </body>
 </html>

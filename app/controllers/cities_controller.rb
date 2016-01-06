@@ -10,7 +10,7 @@ class CitiesController < ApplicationController
 
   def show
   	@city = City.friendly.find(params[:id])
-    @posts = @city.posts.paginate(:page => params[:page], per_page: 5)
+    @posts = @city.posts.order("created_at DESC").paginate(:page => params[:page], per_page: 5)
   end
 
 private

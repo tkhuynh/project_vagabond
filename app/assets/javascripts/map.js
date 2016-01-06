@@ -32,7 +32,7 @@ $(function(){
       properties: {
       description: "<a href='http://localhost:3000/cities/" + city_id +"'>"+ city +"</a>",
         'marker-size': 'small',
-        'marker-color': '#fc4607',
+        'marker-color': '#57633E',
         'marker-symbol': 'circle-stroked'
 
       }
