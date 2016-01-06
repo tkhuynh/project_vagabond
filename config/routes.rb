@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root to: 'posts#index'
+  root to: 'cities#index'
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
