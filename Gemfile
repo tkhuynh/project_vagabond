@@ -14,7 +14,9 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 gem 'paperclip', '~> 4.3', '>= 4.3.2'
-
+# Pagination
+gem 'will_paginate', '~> 3.0', '>= 3.0.7'
+gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
