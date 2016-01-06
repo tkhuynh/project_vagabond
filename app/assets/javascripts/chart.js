@@ -38,7 +38,8 @@ $(function () {
                             dataLabels: {
                                 enabled: false
                             },
-                            showInLegend: true
+                            showInLegend: true,
+                            animation: false
                         }
                     },
                     series: [{

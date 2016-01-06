@@ -1,51 +1,46 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>ProjectVagabond</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <link href='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.css' rel='stylesheet'/>
-  
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<!-- navbar -->
-
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <%= link_to "Monarch", root_path, class: "navbar-brand" %>
+  <head>
+    <title>ProjectVagabond</title>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <link href='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.css' rel='stylesheet'/>
+    <%= javascript_include_tag 'application' %>
+    <script src='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.js'></script>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+  <!-- navbar -->
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <%= image_tag "ProjectVagabond.png", class: "logo pull-left" %>
+        <%= link_to "MONARCH", root_path, class: "navbar-brand" %>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Add Post", new_post_path, class: "nav-links" %></li>
+        <% if current_user %>
+        <li><%= link_to "#{current_user.name}", user_path(current_user), class: "nav-links" %></li>
+        <li><%= link_to "Logout", logout_path, class: "nav-links" %></li>
+        <% else %>
+        <li><%= link_to "Signup", new_user_path, class: "nav-links" %></li>
+        <li><%= link_to "Login", login_path, class: "nav-links" %></li>
+        <% end %>
+      </ul>
     </div>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><%= link_to "Add Post", new_post_path %></li>
-			<% if current_user %>
-				<li><%= link_to "Profile", user_path(current_user) %></li>
-				<li><%= link_to "Logout", logout_path %></li>
-			<% else %>
-	      <li><%= link_to "Signup", new_user_path %></li>
-	      <li><%= link_to "Login", login_path %></li>
-      <% end %>
-    </ul>
-  </div>
-</nav>
-
-
-<!-- error message -->
-<% flash.each do |name, msg| %>
-  <div class="alert <%= name == 'error' ? 'alert-danger' : 'alert-info' %>">
-    <div class="container">
-      <%= msg %>
+  </nav>
+  <!-- error message -->
+  <% flash.each do |name, msg| %>
+    <div class="alert <%= name == 'error' ? 'alert-danger' : 'alert-info' %>">
+      <div class="container">
+        <%= msg %>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+  <%= yield %>
 
-<%= yield %>
-
-<!-- jquery -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+<%= javascript_include_tag 'application' %>
 <script src='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.js'></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
-<%= javascript_include_tag 'application' %>
 </body>
 </html>
