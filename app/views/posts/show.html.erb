@@ -1,6 +1,13 @@
-<h2><%= @post.title %></h2>
-<%= image_tag @post.photo.url(:large) %><br>
-<h4><%= simple_format @post.description %></h4>
+<br>
+<div class="col-lg-5 col-sm-6">
+	<h2><%= @post.title %></h2>
+	<br>
+	<h4><%= simple_format @post.description %></h4>
+	</div>
+	<br>
+	<%= image_tag @post.photo.url(:large) %><br>
+</div>
+
 <% if current_user %>
 	<%= link_to "Edit", edit_post_path(@post), class: "btn btn-primary" %>
 	<%= link_to "Delete", @post, method: :delete, data: {confirm: "Are You Sure?"} , class: "btn btn-primary" %>
