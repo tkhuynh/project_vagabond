@@ -18,51 +18,47 @@
 	          <span class="text-muted">Cities</span>
 	        </div>
 	      </div>
-	      <div class="user-edit-delete">
-		      <%= link_to edit_user_path(@user), class: "btn btn-success" do %>
-		      	<%= icon('pencil') %> Edit Profile
-		      <% end %>
-					 <%= link_to @user, method: :delete, data: {confirm: "Are You Sure?"}, class: "btn btn-danger" do %>
-					 	<%= icon('trash-o') %> Delete Profile
-		      <% end %>
+		    <div id="chart-holder">
+		    	<% if @user.posts.any?  %>
+			    	<div id="posts_chart" class="<%= @user.slug %>", style="height: 300px; max-width: 600px; margin: 0 auto"></div>
+				  <% else %>
+				  	<% if current_user == @user %>
+							<h3 class="text-center">You haven't visited anywhere yet.</h3>
+						<% else %>
+							<h3 class="text-center"><%= @user.name.titleize %> hasn't visited anywhere yet.</h3>
+						<% end %>
+				  <% end %>
 		    </div>
 			</div>
 			<div class="col-sm-8">
-
-				<ul class="nav nav-tabs">
-			    <li class="active"><a data-toggle="tab" href="#posts">POSTS</a></li>
-			    <li><a data-toggle="tab" href="#cities">CITIES VISITED</a></li>
-			  </ul>
-
-			  <div class="tab-content">
-			    <div id="posts" class="tab-pane fade in active">
-			      <% if @user.posts.any? %>
-							<% @posts.each do |post| %>
-								<h3><%= link_to post.title.titleize, post_path(post) %></h3>
-								<h5><i>Posted <%= time_ago_in_words(post.created_at) %> ago</i></h5>
-								<h4 class="text-muted"><%= truncate post.description, length: 1000 %></h4>
-							<% end %>
-						<% else %>
-							<% if current_user == @user %>
-								<h4>You don't have any post yet.</h4>
+				<h2 class="text-center"><%= current_user == @user ? 'Your Posts' : 'Posts' %></h2>
+				<% if @user.posts.any? %>
+					<div class="pagination_holder text-center pull-right">
+						<%= will_paginate @posts, previous_label: 'Newer', next_label: 'Older' %>
+					</div>
+					<br>
+					<div class="posts-container">
+					<% @posts.each do |post| %>
+						<h3><%= link_to post.title.titleize, post_path(post) %></h3>
+						<h5><i>Posted <%= time_ago_in_words(post.created_at) %> ago</i></h5>
+						<h4 class="text-muted">
+							<% if post.description.length > 500 %>
+								<%= truncate (simple_format post.description), length: 500 %>...<%= link_to "read more.", post_path(post) %>
 							<% else %>
-								<h4>This user doesn't have any post yet.</h4>
+								<%= simple_format post.description %>
 							<% end %>
+						</h4>
+					<% end %>
+					</div>
+				<% else %>
+					<div class="posts-container">
+						<% if current_user == @user %>
+							<h3 class="text-center">You haven't posted anything yet.</h3>
+						<% else %>
+							<h3 class="text-center"><%= @user.name.titleize %> hasn't posted anything yet.</h3>
 						<% end %>
-
-						<div class="pagination_holder text-center">
-							<%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
-						</div>
-			    </div>
-			    <div id="cities" class="tab-pane fade">
-			      <% @user.posts.map{|t| t.city_id}.uniq.each do |id| %>
-			      	<h3><%= link_to City.find_by_id(id).name, city_path(City.find_by_id(id).slug) %> (<%= @user.posts.where(city_id: id).count %> posts)</h3>
-			      	<% @user.posts.order("created_at DESC").where(city_id: id).each do |post| %>
-			      		<li><h5><%= link_to post.title.titleize, post_path(post) %></h5></li>
-			      	<% end %>
-			      <% end %>
-			    </div>
-			  </div>				
+					</div>
+				<% end %>				
 			</div>
 		</div>
 	</div>
