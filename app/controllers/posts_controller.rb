@@ -3,12 +3,7 @@ class PostsController < ApplicationController
   before_action :find_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:city].blank?
-      @posts = Post.all.order("created_at DESC")
-    else
-      @city_id = City.find_by(name: params[:city]).id
-      @posts = Post.where(city_id: @city_id).order("created_at DESC")
-    end
+    @posts = Post.all.order("created_at DESC")
   end
 
   def new
