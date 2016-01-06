@@ -2,7 +2,8 @@
 <% if @city.posts.any? %>
 	<% @city.posts.each do |post| %>
 		<h3><%= link_to post.title, post_path(post) %></h3>
-		<h4><%= simple_format post.description %></h4>
+		<%= truncate post.description, length: 1000 %><br>
+		<%= link_to 'view post', post %> 
 	<% end %>
 <% else %>
 	<h3>There aren't any posts yet.</h3>
