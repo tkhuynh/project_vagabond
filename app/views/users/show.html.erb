@@ -31,7 +31,7 @@
 		    </div>
 			</div>
 			<div class="col-sm-8">
-				<h2 class="text-center"><%= current_user == @user ? 'Your Posts' : 'Posts' %></h2>
+				<h2 class="text-center"><%= current_user == @user ? 'My Posts' : 'Posts' %></h2>
 				<% if @user.posts.any? %>
 					<div class="pagination_holder text-center pull-right">
 						<%= will_paginate @posts, previous_label: 'Newer', next_label: 'Older' %>
