@@ -15,6 +15,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+h2 {
+	margin-top: 0;
+}
 .navbar-default {
 	margin-bottom: 0px;
 }
@@ -23,4 +29,34 @@
 }
 .pagination_holder {
 	margin: 0 auto
+}
+#profile {
+	margin-top: 20px;
+}
+.avatar, .user-info {
+	margin: 0 auto;
+}
+.user-posts, .user-cities {
+	float: left;
+  width: 50%;
+}
+.posts-cities {
+  margin-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 55px;
+  text-align: center;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+.post-counts, .city-counts {
+  display: block;
+  font-size: 28px;
+  font-weight: bold;
+  line-height: 1;
+}
+.user-edit-delete {
+	text-align: center;
+}
+.user-edit-delete .btn {
+	min-width: 125px;
 }
