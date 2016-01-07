@@ -27,6 +27,8 @@
   background-color: #074256;
 }
 .navbar-default {
+  border: none;
+  border-radius: 0;
 	margin-bottom: 0px;  
 }
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus, .open > .dropdown-menu, .dropdown-menu > li > a {

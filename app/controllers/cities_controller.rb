@@ -15,7 +15,7 @@ class CitiesController < ApplicationController
 
 private
   def city_params
-  	params.require(:city).permit(:name, :long, :lat, :slug)
+  	params.require(:city).permit(:name, :long, :lat, :slug, :url)
   end
 
   def find_city
