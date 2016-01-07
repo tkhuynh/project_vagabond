@@ -1,65 +1,68 @@
-<div class="row" id="profile">
-	<div class="col-lg-10 col-lg-offset-1">
-		<div class="row">
-			<div class="col-sm-4">
-				<%= image_tag @user.avatar.url(:medium), class: "img-responsive avatar img-rounded" %>
-				<hr>
-				<div class="user-info">
-					<h4><%= @user.name %></h4>
-					<h5 class="text-muted"><%= icon('clock-o') %> Joined on <%= @user.created_at.to_date.to_formatted_s(:long_ordinal) %></h5>
+<br>
+<div class="col-lg-10 col-lg-offset-1">
+	<div class="row">
+		<div class="col-md-5">
+			<h4 class="text-center"><%= @user.name %></h4>
+			<%= image_tag @user.avatar.url(:medium), class: "img-responsive avatar img-rounded image-resize"%>
+			<h5 class="text-muted text-center"><%= icon('clock-o') %> Joined on <%= @user.created_at.to_date.to_formatted_s(:long_ordinal) %></h5>
+			<div class="posts-cities">
+				<div class="user-posts">
+					<strong class="post-counts"><%= @user.posts.count %></strong>
+					<span class="text-muted">Posts</span>
 				</div>
-				<div class="posts-cities">
-					<div class="user-posts">
-	          <strong class="post-counts"><%= @user.posts.count %></strong>
-	          <span class="text-muted">Posts</span>
-	        </div>
-	        <div class="user-cities">
-	          <strong class="city-counts"><%= @user.posts.map{|t| t.city_id}.uniq.count %></strong>
-	          <span class="text-muted">Cities</span>
-	        </div>
-	      </div>
-		    <div id="chart-holder">
-		    	<% if @user.posts.any?  %>
-			    	<div id="posts_chart" class="<%= @user.slug %>", style="height: 300px; max-width: 600px; margin: 0 auto"></div>
-				  <% else %>
-				  	<% if current_user == @user %>
-							<h3 class="text-center">You haven't visited anywhere yet.</h3>
-						<% else %>
-							<h3 class="text-center"><%= @user.name.titleize %> hasn't visited anywhere yet.</h3>
-						<% end %>
-				  <% end %>
-		    </div>
+				<div class="user-cities">
+					<strong class="city-counts"><%= @user.posts.map{|t| t.city_id}.uniq.count %></strong>
+					<span class="text-muted">Cities</span>
+				</div>
 			</div>
-			<div class="col-sm-8">
-				<h2 class="text-center"><%= current_user == @user ? 'My Posts' : 'Posts' %></h2>
-				<% if @user.posts.any? %>
-					<div class="pagination_holder text-center pull-right">
-						<%= will_paginate @posts, previous_label: 'Newer', next_label: 'Older' %>
-					</div>
-					<br>
-					<div class="posts-container">
-					<% @posts.each do |post| %>
-						<h3><%= link_to post.title.titleize, post_path(post) %></h3>
-						<h5><i>Posted <%= time_ago_in_words(post.created_at) %> ago</i></h5>
-						<h4 class="text-muted">
-							<% if post.description.length > 500 %>
-								<%= truncate (simple_format post.description), length: 500 %>...<%= link_to "read more.", post_path(post) %>
-							<% else %>
-								<%= simple_format post.description %>
-							<% end %>
-						</h4>
-					<% end %>
-					</div>
+		</div>
+		<br>
+		<div class="col-md-7">
+			<div id="chart-holder">
+				<% if @user.posts.any?  %>
+				<div id="posts_chart" class="<%= @user.slug %>", style="height: 350px; max-width: 500px; margin: -10px auto"></div>
 				<% else %>
-					<div class="posts-container">
-						<% if current_user == @user %>
-							<h3 class="text-center">You haven't posted anything yet.</h3>
-						<% else %>
-							<h3 class="text-center"><%= @user.name.titleize %> hasn't posted anything yet.</h3>
-						<% end %>
-					</div>
-				<% end %>				
+				<% if current_user == @user %>
+				<h3 class="text-center">You haven't visited anywhere yet.</h3>
+				<% else %>
+				<h3 class="text-center"><%= @user.name.titleize %> hasn't visited anywhere yet.</h3>
+				<% end %>
+				<% end %>
 			</div>
+		</div>
+		
+	</div>
+	<div align="center">
+		<h2 class="text-center"><%= current_user == @user ? '' : 'Posts' %></h2>
+		<% if @user.posts.any? %>
+		<div class="pagination_holder text-center pull-right">
+			<%= will_paginate @posts, previous_label: 'Newer', next_label: 'Older' %>
+		</div>
+		<br>
+		<div class="posts-container">
+			<% @posts.each do |post| %>
+			<div align="center">
+				<h3><%= link_to post.title.titleize, post_path(post) %></h3>
+				<h5><i>Posted <%= time_ago_in_words(post.created_at) %> ago</i></h5>
+				<h4 class="text-muted">
+				<% if post.description.length > 500 %>
+				<%= truncate (simple_format post.description), length: 500 %>...<%= link_to "read more.", post_path(post) %>
+				<% else %>
+				<%= simple_format post.description %>
+				<% end %>
+				</h4>
+				<% end %>
+			</div>
+			<% else %>
+			<div class="posts-container">
+				<% if current_user == @user %>
+				<h3 class="text-center">You haven't posted anything yet.</h3>
+				<% else %>
+				<h3 class="text-center"><%= @user.name.titleize %> hasn't posted anything yet.</h3>
+				<% end %>
+			</div>
+			<% end %>
 		</div>
 	</div>
 </div>
+<!-- </div> -->
