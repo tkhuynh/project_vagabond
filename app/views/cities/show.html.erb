@@ -1,19 +1,17 @@
-<div align="center">
-<h1>Welcome to <%= @city.name %></h1>
-<br>
-<%= image_tag "city.png" %>
-	<div class="col-md-8 col-lg-offset-2 col-sm-6">
-<% if @posts.any? %>
+<%= image_tag @city.url, class: "city-banner" %>
+<div class="col-md-8 col-lg-offset-2 col-sm-6">
+	<% if @posts.any? %>
 	<% @posts.each do |post| %>
-		<h3><%= link_to post.title, post_path(post) %></h3>
-		<%= truncate post.description, length: 1000 %><br>
-		<%= link_to 'view post', post %> 
+	<h3><%= image_tag post.photo.url(:large), class: "post-image" %><%= link_to post.title, post_path(post), class: "post-link" %></h3>
+	<%= truncate post.description, length: 1000 %><br>
+	<%= link_to 'view post', post %>
+	<hr>
 	<% end %>
-<% else %>
+	<% else %>
 	<h3>There aren't any posts yet.</h3>
 	<h4>Be the first one to write about <%= @city.name %>. <%= link_to "Click here", new_post_path %></h4>
-<% end %>
-	</div>
+	<% end %>
+	<hr>
 </div>
 <div class="pagination_holder text-center">
 	<%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
