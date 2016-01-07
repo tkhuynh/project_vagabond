@@ -15,7 +15,9 @@ $(function () {
                             posts_for_each_city++;
                         }
                     }
-                    data_for_chart.push({name: all_cities[i].name, y: posts_for_each_city});
+                    if (posts_for_each_city > 0) {
+                        data_for_chart.push({name: all_cities[i].name, y: posts_for_each_city});
+                    }
                 }
                 // Build the chart
                 $('#posts_chart').highcharts({
