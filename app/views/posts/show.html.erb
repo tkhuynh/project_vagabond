@@ -13,7 +13,7 @@
 				<div class="col-sm-5">
 					<%= image_tag @post.photo.url(:large), class: "img-responsive" %>
 					<div class="text-center">
-						<%= link_to "Let Go to " + City.find(@post.city_id).name, city_path(City.find(@post.city_id).slug), class: "btn btn-success", id: "visit-button" %>
+						<%= link_to "Let's Go to " + City.find(@post.city_id).name, city_path(City.find(@post.city_id).slug), class: "btn btn-success", id: "visit-button" %>
 					</div>
 				</div>
 				<div class="col-sm-7">

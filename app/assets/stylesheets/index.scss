@@ -3,14 +3,37 @@ p {
 	color: #062F3D;
 }
 
+
+
 h1 {
 	font-family: 'ikaros_sans_regularregular';
 	text-transform: uppercase;
 	color: #062F3D;
 }
 
-h3 {
+h2 {
+	font-family: 'ikaros_sans_regularregular';
+	text-transform: uppercase;
+}
+
+h3, h4, g, tspan {
 	color: #062F3D;
+	font-family: 'ikaros_sans_regularregular';
+	text-transform: uppercase;
+}
+
+.edit-font {
+	color: #062F3D;
+}
+
+.edit-font:hover {
+	color: #0A4656;
+	text-decoration: none;
+}
+
+.restore-font {
+	font-family: sans-serif;
+	text-transform: none;
 }
 
 .jumbotron {
@@ -24,6 +47,10 @@ h3 {
 
 .content-section-a {
 	background-color: white;
+}
+
+.change-font {
+	font-family: 'ikaros_sans_regularregular';
 }
 
 
@@ -131,6 +158,4 @@ h3 {
 	text-decoration: none;
 }
 
-.post-link {
-	
-}
+

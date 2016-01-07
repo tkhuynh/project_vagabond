@@ -41,7 +41,7 @@
 			<div class="posts-container">
 				<% @posts.each do |post| %>
 					<div class="post">
-						<h3><%= link_to post.title.titleize, post_path(post) %></h3>
+						<h3 ><%= link_to post.title.titleize, post_path(post), class: "edit-font" %></h3>
 						<h5><i>Posted <%= time_ago_in_words(post.created_at) %> ago</i></h5>
 						<% if post.description.length > 500 %>
 						<%= truncate post.description, length: 500 %>...<%= link_to "read more.", post_path(post) %>
