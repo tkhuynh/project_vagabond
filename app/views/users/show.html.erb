@@ -30,30 +30,28 @@
 				<% end %>
 			</div>
 		</div>
-		
 	</div>
-	<div align="center">
-		<h2 class="text-center"><%= current_user == @user ? '' : 'Posts' %></h2>
+	<div class="row">
+		<h2 class="text-center"><%= current_user == @user ? 'Your Posts' : 'Posts' %></h2>
 		<% if @user.posts.any? %>
-		<div class="pagination_holder text-center pull-right">
-			<%= will_paginate @posts, previous_label: 'Newer', next_label: 'Older' %>
-		</div>
-		<br>
-		<div class="posts-container">
-			<% @posts.each do |post| %>
-			<div align="center">
-				<h3><%= link_to post.title.titleize, post_path(post) %></h3>
-				<h5><i>Posted <%= time_ago_in_words(post.created_at) %> ago</i></h5>
-				<h4 class="text-muted">
-				<% if post.description.length > 500 %>
-				<%= truncate (simple_format post.description), length: 500 %>...<%= link_to "read more.", post_path(post) %>
-				<% else %>
-				<%= simple_format post.description %>
-				<% end %>
-				</h4>
+			<div class="pagination_holder text-center pull-right">
+				<%= will_paginate @posts, previous_label: 'Newer', next_label: 'Older' %>
+			</div>
+			<br>
+			<div class="posts-container">
+				<% @posts.each do |post| %>
+					<div class="post">
+						<h3><%= link_to post.title.titleize, post_path(post) %></h3>
+						<h5><i>Posted <%= time_ago_in_words(post.created_at) %> ago</i></h5>
+						<% if post.description.length > 500 %>
+						<%= truncate post.description, length: 500 %>...<%= link_to "read more.", post_path(post) %>
+						<% else %>
+						<%= simple_format post.description %>
+						<% end %>
+					</div>
 				<% end %>
 			</div>
-			<% else %>
+		<% else %>
 			<div class="posts-container">
 				<% if current_user == @user %>
 				<h3 class="text-center">You haven't posted anything yet.</h3>
@@ -61,8 +59,6 @@
 				<h3 class="text-center"><%= @user.name.titleize %> hasn't posted anything yet.</h3>
 				<% end %>
 			</div>
-			<% end %>
-		</div>
+		<% end %>
 	</div>
 </div>
-<!-- </div> -->

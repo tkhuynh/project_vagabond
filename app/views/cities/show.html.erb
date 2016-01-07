@@ -1,18 +1,32 @@
 <%= image_tag @city.url, class: "city-banner" %>
-<div class="col-md-8 col-lg-offset-2 col-sm-6">
+<div class="dropdown pull-right" id="city_list">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Go to Other Cities
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <% City.all.each do |city| %>
+			<li><%= link_to city.name, city_path(city.slug) %></li>
+    <% end %>
+    <li role="separator" class="divider"></li>
+    <li><%= link_to "Back to Map", root_path %></a></li>
+  </ul>
+</div>
+<div class="col-md-8 col-lg-offset-2" id="city_page_posts">
 	<% if @posts.any? %>
-	<% @posts.each do |post| %>
-	<h3><%= image_tag post.photo.url(:large), class: "post-image" %><%= link_to post.title, post_path(post), class: "post-link" %></h3>
-	<%= truncate post.description, length: 1000 %><br>
-	<%= link_to 'view post', post %>
-	<hr>
-	<% end %>
+		<% @posts.each do |post| %>
+		<div class="post">
+			<h3><%= image_tag post.photo.url(:large), class: "post-image" %><%= link_to post.title, post_path(post), class: "post-link" %></h3>
+			<p><i>Posted by: <%= link_to User.find(post.user_id).name, user_path(User.find(post.user_id).slug) %> (<%= time_ago_in_words(post.created_at) %> ago)</i></p>
+			<%= truncate post.description, length: 500 %><%= link_to "read more", post_path(post) %>.
+			<br>
+		</div>
+		<% end %>
 	<% else %>
 	<h3>There aren't any posts yet.</h3>
 	<h4>Be the first one to write about <%= @city.name %>. <%= link_to "Click here", new_post_path %></h4>
 	<% end %>
-	<hr>
-</div>
-<div class="pagination_holder text-center">
-	<%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+	<div class="pagination_holder text-center">
+		<%= will_paginate @posts, renderer: BootstrapPagination::Rails, class: "boostrap-pagination" %>
+	</div>
 </div>

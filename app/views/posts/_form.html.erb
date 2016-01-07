@@ -21,6 +21,11 @@
 				</div>
 				<div class="form-group">
 					<%= f.submit "Post", class: "btn btn-success" %>
+					<% if @new_post %>
+						<%= link_to "Cancel", root_path, class: "btn btn-default" %>
+					<% elsif @edit_post %>
+						<%= link_to "Cancel", post_path(@post), class: "btn btn-default" %>
+					<% end %>
 				</div>
 			<% end %>
 		</div>	

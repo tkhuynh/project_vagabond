@@ -8,6 +8,7 @@ class PostsController < ApplicationController
 
   def new
     if current_user
+      @new_post = true
       @post = Post.new
     else
       flash[:error] = "Please login or signup to write a post."
@@ -35,6 +36,7 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @edit_post = true
     unless current_user == @post.user
       flash[:error] = "You can't edit other user's post."
       redirect_to post_path(@post)
