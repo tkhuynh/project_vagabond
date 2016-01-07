@@ -34,12 +34,24 @@
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus, .open > .dropdown-menu, .dropdown-menu > li > a {
   background-color: #062F3D;
   color: white;
+  border-radius: 0;
+}
+.pagination > li > a, .pagination > li > span {
+  border: none;
+  color: #4c5635;
+}
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
+  background-color: #062F3D;
+  border: none;
 }
 #map { 
 	width:100%; height: 600px
 }
 .pagination_holder {
 	margin: 0 auto
+}
+.pagination {
+  margin: 0;
 }
 
 /* user profile */
@@ -76,6 +88,7 @@
 }
 
 /* home page */
+
 div.learn-more-holder {
   background-color: #FBFFF5;
   margin-top: -45px;
@@ -105,4 +118,39 @@ footer {
 p.copyright {
   color: #777;
   font-size: 16px;
+}
+
+/*post page*/
+
+.post {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #F7F7F7;
+  box-shadow: 0 0 10px 1px rgba(0,0,0,0.25);
+}
+.post-content {
+  margin: 20px;
+}
+.post-content .fa-pencil-square-o, .post-content .fa-trash-o {
+  font-size: 20px;
+  margin: 0px 10px 0px 10px;
+}
+.post-content p {
+  font-size: 16px;
+}
+
+/*city page*/
+
+#city_page {
+  background-color: #DFEBCF;
+}
+#city_list .btn-default {
+  border: none;
+  border-radius: 0;
+  background-color: #062F3D;
+  color: white;
+  min-width: 160px;
+}
+.boostrap-pagination {
+  margin: 20px 0px 20px 0px;
 }

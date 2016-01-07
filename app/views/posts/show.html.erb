@@ -1,17 +1,24 @@
-<br>
-<div class="col-lg-5 col-sm-6">
-	<h2><%= @post.title %></h2>
-	<br>
-	<h4><%= simple_format @post.description %></h4>
+<div class="container">
+	<div class="row post">
+		<div class="post-content">
+			<div class="col-sm-12">
+				<h2><%= @post.title %>
+				<% if current_user == @post.user %>
+					<%= link_to icon('trash-o'), @post, method: :delete, data: {confirm: "Are You Sure?"}, class: "pull-right delete" %>
+					<%= link_to icon('pencil-square-o'), edit_post_path(@post), class: "pull-right edit" %>
+				<% end %>
+				</h2>
+			</div>
+			<div class="row">
+				<div class="col-sm-5">
+					<%= image_tag @post.photo.url(:large), class: "img-responsive" %>
+				</div>
+				<div class="col-sm-7">
+					<p><%= simple_format @post.description %><p>
+				</div>
+			</div>
+		</div>
 	</div>
-	<br>
-	<%= image_tag @post.photo.url(:large) %><br>
 </div>
 
-<% if current_user %>
-	<%= link_to "Edit", edit_post_path(@post), class: "btn btn-primary" %>
-	<%= link_to "Delete", @post, method: :delete, data: {confirm: "Are You Sure?"} , class: "btn btn-primary" %>
-	<%= link_to "Go to " + City.find_by_id(@post.city_id).name, city_path(City.find_by_id(@post.city_id).slug), class: "btn btn-default" %>
-<% else %>
-<% end %>
 
