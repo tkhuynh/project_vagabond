@@ -20,6 +20,7 @@
 					<%= link_to "Cancel", user_path(@user), class: "btn btn-default" %>
 				</div>
 			<% end %>
+			<%= link_to "Delete Your Account?", @user, method: :delete, data: {confirm: "Are You Sure?"} %>
 		</div>	
 	</div>
 </div>
